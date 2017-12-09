@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+   <articles>
+      <article>
+         <categories>
+            <category>cipele</category>
+         </categories>
+         <desc>Uživajući kao moderan cipelar, Corthai je preneo znanje preneto iz Compagnons, francuskog srednjovekovnog ceha, kako bi savršeno iskoristio umetničku obuću i koristio različite materijale, tehnike i oblike za ekskluzivni izbor obućarske cipele.</desc>
+         <id>1</id>
+         <img>./img/articles/cipele/c1-min.jpg</img>
+         <name>Corthay</name>
+         <price>100</price>
+         <stars>10</stars>
+      </article>
+      <article>
+         <categories>
+            <category>cipele</category>
+         </categories>
+         <desc>Salvatore Ferragamo je bio elitni brend za cipele nakon što je uhvatio oči holivudskih poznatih ličnosti 1920-ih. Posle tri generacije, lepota i kvalitet Salvatore Ferragamove ručno obučene cipele Italije i dalje su cenjeni i tražen od strane mnogih.</desc>
+         <id>2</id>
+         <img>./img/articles/cipele/c2-min.jpg</img>
+         <name>Salvatore Ferragamo</name>
+         <price>100</price>
+         <stars>10</stars>
+      </article>
+      <article>
+         <categories>
+            <category>cipele</category>
+         </categories>
+         <desc>A. Testoni inovativno kombinuje drevne i savremene italijanske dizajnerske tehnike kako bi napravile cipele koje demonstriraju vrhunski talijanski zanat. Svaka cipela je striktno ručno izrađena bez oklevanja u korišćenju najkvalitetnijih materijala uz uključivanje detaljnih detalja o stilu.</desc>
+         <id>3</id>
+         <img>./img/articles/cipele/c3-min.jpg</img>
+         <name>A Testoni</name>
+         <price>200</price>
+         <stars>1</stars>
+      </article>
+      <article>
+         <categories>
+            <category>cipele</category>
+         </categories>
+         <desc>Ovaj popularni brend za cipele najizraženiji je svojim potpisom crvenom lakiranom podlogom, zajedno sa dizajnerskim dizajnom koji uključuje patentirane kože i narukvice. Obuća Christian Louboutin postoji kao jedan od najelegantnijih i trendovitih brendova cipela ove ere.</desc>
+         <id>4</id>
+         <img>./img/articles/cipele/c4-min.jpg</img>
+         <name> Christian Louboutin</name>
+         <price>140</price>
+         <stars>4</stars>
+      </article>
+      <article>
+         <categories>
+            <category>cipele</category>
+         </categories>
+         <desc>Kompanija Balli iz Švajcarske uključuje pametne boje i atletski stil u svojom obućom, sve dok održava sofisticiranu estetiku uz upotrebu visokokvalitetnih materijala, elegantan i sjajni dizajn.</desc>
+         <id>5</id>
+         <img>./img/articles/cipele/c5-min.jpg</img>
+         <name>Bally</name>
+         <price>400</price>
+         <stars>11</stars>
+      </article>
+      <article>
+         <categories>
+            <category>cipele</category>
+         </categories>
+         <desc>Od Okfordsa, Loafersa i Derbiesa, Berluti je izrađivao cipele za elegantnog čoveka od 1895. godine. Njegov izbor vrhunske i udobne kožne obuće je napravljen da daje najbolji utisak za te zvanične prilike ili za svakodnevnu casualnu odeću.</desc>
+         <id>6</id>
+         <img>./img/articles/cipele/c6-min.jpg</img>
+         <name>Berluti</name>
+         <price>450</price>
+         <stars>7</stars>
+      </article>
+      <article>
+         <categories>
+            <category>cipele</category>
+         </categories>
+         <desc>Poznati kao "kralj luksuza", Brunello Cucinelli je u svoj brend postavio svoj luksuzni materijal i jednostavnu, ali klasičnu paletu boja. Inspirisan prelepim pejzažom Solomeo u Italiji, njegov brend je učinio puno divljenja svojim filozofskim pristupom dizajnu.</desc>
+         <id>7</id>
+         <img>./img/articles/cipele/c7-min.jpg</img>
+         <name>Brunello Cucinelli</name>
+         <price>190</price>
+         <stars>2</stars>
+      </article>
+      <article>
+         <categories>
+            <category>cipele</category>
+         </categories>
+         <desc>Za nosioce klasičnih obuće, Bolvaint pokazuje izradu svoje marke svojim pažljivim odabirom kožnog materijala i oštrim okom za detalje. Stil Pariza se postiže svojim sofisticiranim dizajnom i elegantnim imidžom.</desc>
+         <id>8</id>
+         <img>./img/articles/cipele/c8-min.jpg</img>
+         <name>Bolvaint</name>
+         <price>290</price>
+         <stars>6</stars>
+      </article>
+      <article>
+         <categories>
+            <category>cipele</category>
+         </categories>
+         <desc>Crockett &amp; Jones su proizvođači nekih od najvećih ručno izrađenih engleskih obuće, izrađujući svoje cipele od najfinije kože kože sa vrhunskih tannerija Evrope. Pravo iz Northamptona, kvalitetan i vanvremenski stil naglašen je u procesu čuvanja čarapa.</desc>
+         <id>9</id>
+         <img>./img/articles/cipele/c9-min.jpg</img>
+         <name>Crockett And Jones</name>
+         <price>490</price>
+         <stars>10</stars>
+      </article>
+      <article>
+         <categories>
+            <category>cipele</category>
+         </categories>
+         <desc>Tradicija engleske elegancije dobro se drži bezvremenskim stilovima Edvarda Grina, koji su se rodili u Northamptonu 1890. godine. NJihova pažnja na klasične dizajne se i dalje može uočiti u njihovim vještačkim cipelama koje zajedno povezuju sofisticiranost i moderne trendove.</desc>
+         <id>10</id>
+         <img>./img/articles/cipele/c10-min.jpg</img>
+         <name>Edward Green</name>
+         <price>190</price>
+         <stars>12</stars>
+      </article>
+      <article>
+         <categories>
+            <category>cipele</category>
+         </categories>
+         <desc>Brend Giacometti, osnovan u Italiji 1890. godine, izgrađen je proizvodnjom obuće sa jedinstvenom konstrukcijom i dizajnom, uključujući bezbrojne varijacije kože i prepoznatljive detalje koji pomažu u postavljanju imena Giacometti od svih ostalih.</desc>
+         <id>11</id>
+         <img>./img/articles/cipele/c11-min.jpg</img>
+         <name>Giacometti</name>
+         <price>190</price>
+         <stars>12</stars>
+      </article>
+      <article>
+         <categories>
+            <category>cipele</category>
+         </categories>
+         <desc>Brend Santoni je odličan primer istinske odličnosti italijanske čarape. Tradicija i inovacije su ključni elementi tehnikama craftinga, koji se pokreću modernim stavom s drevnim znanjem čine Santoni cipele ističući među modnim svetom.</desc>
+         <id>12</id>
+         <img>./img/articles/cipele/c12-min.jpg</img>
+         <name>Santoni</name>
+         <price>190</price>
+         <stars>12</stars>
+      </article>
+      <article>
+         <categories>
+            <category>satovi</category>
+         </categories>
+         <desc>Brojčanik i korona izrađeni su u specifičnoj khaki zelenoj nijansi dok narukvica od tkanine kompletira jedinstveni izgled. Inače, kompanija Tudor po drugi put učestvuje na renomiranoj Only Watch aukciji.</desc>
+         <id>13</id>
+         <img>./img/articles/satovi/s1-min.jpg</img>
+         <name>Black Bay Bronze One</name>
+         <price>1952</price>
+         <stars>10</stars>
+      </article>
+      <article>
+         <categories>
+            <category>satovi</category>
+         </categories>
+         <desc>Elegantan časovnik dizajniran za pronicljivu žensku osobu. Dimenzionalno gledanje izlučuje skromne proporcije i meri 35mm k 8mm. Ono što ovaj sat čini tako atraktivnim jeste sjajno kućište od nerdjajuceg čelika 316L. Ova šarmantna karakteristika radi u savršenoj saglasnosti sa srebrnim biranjem i zlatnim satima / minutnim rukama. Ostale karakteristike uključuju diskretan prozor za datum (koji se nalazi u 3 sata) crni kožni remen, Svarovski kristalni markeri i Hesalit kristalni objektiv.</desc>
+         <id>14</id>
+         <img>./img/articles/satovi/s2-min.jpg</img>
+         <name>Calister</name>
+         <price>851</price>
+         <stars>2</stars>
+      </article>
+      <article>
+         <categories>
+            <category>satovi</category>
+         </categories>
+         <desc>Miyota 82s0 nudi čvrsto dizajniran savremeni automatski sat koji bi svakog arhitekte i inženjera trebalo da plače. Ovo je nova kompanija za čuvanje, koja koristi ime iz alata za merenje udaljenosti između dve strane objekta.</desc>
+         <id>15</id>
+         <img>./img/articles/satovi/s3-min.jpg</img>
+         <name>Miyota 82s0</name>
+         <price>724</price>
+         <stars>3</stars>
+      </article>
+      <article>
+         <categories>
+            <category>satovi</category>
+         </categories>
+         <desc>Sat od nerdjajuceg čelika sa finim okretnim okvirom motora (prečnik 25 mm). Crni brojčanik sa markerima. Jubilejna narukvica od nerdjajuceg čelika.</desc>
+         <id>16</id>
+         <img>./img/articles/satovi/s4-min.jpg</img>
+         <name>Rolex Syster Perpetual 67230</name>
+         <price>798</price>
+         <stars>15</stars>
+      </article>
+      <article>
+         <categories>
+            <category>satovi</category>
+         </categories>
+         <desc>Sat od nerdjajuceg čelika sa finim okretnim okvirom motora (prečnik 35 mm). Crni brojčanik sa markerima. Jubilejna narukvica od nerdjajuceg čelika.</desc>
+         <id>17</id>
+         <img>./img/articles/satovi/s5-min.jpg</img>
+         <name>Rolex 16233</name>
+         <price>447</price>
+         <stars>9</stars>
+      </article>
+      <article>
+         <categories>
+            <category>satovi</category>
+         </categories>
+         <desc>Kompletan kalendar i zaštitni mineralni kristalni prozor, kućište od legure, crni kožni remen. Nerđajući čelik i kron i dizajn posebnog biranja otkrivaju vašu moćnu tačku gledanja.</desc>
+         <id>18</id>
+         <img>./img/articles/satovi/s6-min.jpg</img>
+         <name>Relógios Jaragar</name>
+         <price>290</price>
+         <stars>6</stars>
+      </article>
+      <article>
+         <categories>
+            <category>satovi</category>
+         </categories>
+         <desc>Jednostavan u dizajnu, suptilan u stilu. Moda i moderan dizajn, pogodan za svaku priliku. Vodootporan: otporan na vodu od svakodnevnog života, ali ne za kupanje, plivanje, ronjenje itd. Najbolji izbor kao poklon za venčanje, godišnjicu, rođendan, Valentinovo i druge značajne dane. Veliki okrugli dvostruki dizajn ekrana, veoma lako čitljiv.</desc>
+         <id>19</id>
+         <img>./img/articles/satovi/s7-min.jpg</img>
+         <name>Yazole</name>
+         <price>728</price>
+         <stars>12</stars>
+      </article>
+      <article>
+         <categories>
+            <category>satovi</category>
+         </categories>
+         <desc>Uvezena automatska mehanička kretanja, veoma izdržljiva za upotrebu. Sa ručnim ležajima od 21 komada, prikazuje se luksuz sa malim ključem. Sapphire dizajn ogledala, otporan na ogrebotine, otporan na vodu. Dvostruki brod, vrlo poseban. 30 m vodootporna klasa, nema potrebe da brinete u kišnim danima. Poslovni stil, posebno pogodan za muškarce u poslovnoj prilici.</desc>
+         <id>20</id>
+         <img>./img/articles/satovi/s8-min.jpg</img>
+         <name>Ochstin Automatic</name>
+         <price>859</price>
+         <stars>9</stars>
+      </article>
+      <article>
+         <categories>
+            <category>satovi</category>
+         </categories>
+         <desc>Patek Philippe smatra se najprestižnijim luksuznim časovničarima u industriji. Početkom 1839. godine u Ženevi kao džepni sat, kompanija Patek Philippe ima dugu i istoriju istorije gledanja, uključujući i prvu kompaniju koja je dodala hronograf, minutni repetitor, večni kalendar i ruku podijeljenih sekundi ručni sat. Klijenti Roial Patek Philippe-a su Prince Albert, Christian IKS, Hussein Kamel iz Egipta, Princeza Louise iz Danske, kraljica Viktorija i Victor Emmanuel III iz Italije...</desc>
+         <id>21</id>
+         <img>./img/articles/satovi/s9-min.jpg</img>
+         <name>Patek Philippe</name>
+         <price>777</price>
+         <stars>2</stars>
+      </article>
+      <article>
+         <categories>
+            <category>satovi</category>
+         </categories>
+         <desc>Corleone L'orologio je osnovan u ograničnom čuvaru maschilea, jer je više element koji doprinosi definisanju lepote i uobičajenih stilova.</desc>
+         <id>22</id>
+         <img>./img/articles/satovi/s10-min.jpg</img>
+         <name>Corleone</name>
+         <price>840</price>
+         <stars>12</stars>
+      </article>
+      <article>
+         <categories>
+            <category>satovi</category>
+         </categories>
+         <desc>Tri mala ukrasna pod-biranja čine sat jedinstvenim. Kutija od nerdjajuceg čelika je čvrsta u strukturi i neprijatna za oštricu. Kožna satna traka je udobna za nošenje. Klasična kopčica pinova, pogodna za podešavanje.</desc>
+         <id>23</id>
+         <img>./img/articles/satovi/s11-min.jpg</img>
+         <name>Weite</name>
+         <price>821</price>
+         <stars>2</stars>
+      </article>
+      <article>
+         <categories>
+            <category>satovi</category>
+         </categories>
+         <desc>Jednostavan u dizajnu, suptilan u stilu. Moda i moderan dizajn, pogodan za svaku priliku. Vodootporan: otporan na vodu od svakodnevnog života, ali ne za kupanje, plivanje, ronjenje itd. Najbolji izbor kao poklon za venčanje, godišnjicu, rođendan, Valentinovo i druge značajne dane. Veliki okrugli dvostruki dizajn ekrana, veoma lako čitljiv.</desc>
+         <id>24</id>
+         <img>./img/articles/satovi/s12-min.jpg</img>
+         <name>Yazole 602a</name>
+         <price>635</price>
+         <stars>7</stars>
+      </article>
+      <article>
+         <categories>
+            <category>kosulje</category>
+         </categories>
+         <desc>Ova španska kompanija je jedna od najneobičnijih razornih trgovaca na svetu. Ova kompanija osnovana je 1975. godine. Osnivač ove kompanije je Amancio Ortega i Rosalia Mera. Oni su stručnjaci u proizvodnji odjeće svjetske klase. Ova kompanija je kompanija brodskog broda pod posrednom grupom. Oni proizvode oko 10 000 dizajna svake godine i imaju ekspertizu u proizvodnji luksuznih linija za odeću.</desc>
+         <id>25</id>
+         <img>./img/articles/kosulje/k1-min.jpg</img>
+         <name>ZARA 2017</name>
+         <price>328</price>
+         <stars>7</stars>
+      </article>
+      <article>
+         <categories>
+            <category>kosulje</category>
+         </categories>
+         <desc>Pamučna svetlo plava kosulja.</desc>
+         <id>26</id>
+         <img>./img/articles/kosulje/k2-min.jpg</img>
+         <name>Camisa de Vestir Hombre</name>
+         <price>303</price>
+         <stars>11</stars>
+      </article>
+      <article>
+         <categories>
+            <category>kosulje</category>
+         </categories>
+         <desc>Ova elegantna košulja je savršena za izlaske, posao, svakodnevnu varijantu, sve sezone i prilike.</desc>
+         <id>27</id>
+         <img>./img/articles/kosulje/k12-min.jpg</img>
+         <name>Paul Jones</name>
+         <price>484</price>
+         <stars>8</stars>
+      </article>
+      <article>
+         <categories>
+            <category>kosulje</category>
+         </categories>
+         <desc>65% poliester, 35% pamuk. Obučene košulje imaju potpunu rukavu, potpunu grudi, konusno sečenje i tanji su u struku.</desc>
+         <id>28</id>
+         <img>./img/articles/kosulje/k6-min.jpg</img>
+         <name>Van Heusen</name>
+         <price>549</price>
+         <stars>7</stars>
+      </article>
+      <article>
+         <categories>
+            <category>kosulje</category>
+         </categories>
+         <desc>Slim fit, odgovara veličini, kvalitetnom tkaninom i izradom stila čini da se osećate dobro i udobno kada ga nosite.</desc>
+         <id>29</id>
+         <img>./img/articles/kosulje/k5-min.jpg</img>
+         <name>Tom's Ware</name>
+         <price>205</price>
+         <stars>1</stars>
+      </article>
+      <article>
+         <categories>
+            <category>kosulje</category>
+         </categories>
+         <desc>Slim fit košulja sa konusnim rukavima, rukama sa višim rukama i tanji rezom na grudima i struku.</desc>
+         <id>30</id>
+         <img>./img/articles/kosulje/k4-min.jpg</img>
+         <name>Calvin Klein</name>
+         <price>476</price>
+         <stars>13</stars>
+      </article>
+      <article>
+         <categories>
+            <category>kosulje</category>
+         </categories>
+         <desc>Obložena plava pamučna košulja sa dugim rukavima sa plutajućim ikonama zvezdica.</desc>
+         <id>31</id>
+         <img>./img/articles/kosulje/k8-min.jpg</img>
+         <name>Versace</name>
+         <price>768</price>
+         <stars>7</stars>
+      </article>
+      <article>
+         <categories>
+            <category>kosulje</category>
+         </categories>
+         <desc>Obložena crna pamučna košulja sa dugim rukavima sa plutajućim ikonama zvezdica.</desc>
+         <id>32</id>
+         <img>./img/articles/kosulje/k7-min.jpg</img>
+         <name>Versace black</name>
+         <price>764</price>
+         <stars>4</stars>
+      </article>
+      <article>
+         <categories>
+            <category>kosulje</category>
+         </categories>
+         <desc>65% poliester / 35% pamuk. Radna košulja na prednjoj strani u opuštenoj ponudi sa dugim rukavima i džepovima sa džepovima sa dugmićima.</desc>
+         <id>33</id>
+         <img>./img/articles/kosulje/k3-min.jpg</img>
+         <name>Dickies</name>
+         <price>428</price>
+         <stars>8</stars>
+      </article>
+      <article>
+         <categories>
+            <category>kosulje</category>
+         </categories>
+         <desc>100% pamuk. Pogodno za sve vrste aktivnosti.</desc>
+         <id>34</id>
+         <img>./img/articles/kosulje/k9-min.jpg</img>
+         <name>LOCALMODE</name>
+         <price>571</price>
+         <stars>10</stars>
+      </article>
+      <article>
+         <categories>
+            <category>kosulje</category>
+         </categories>
+         <desc>SportFlek tehnologija omogućava tkanini da se prostiri za maksimalan komfor.</desc>
+         <id>35</id>
+         <img>./img/articles/kosulje/k11-min.jpg</img>
+         <name>IZOD</name>
+         <price>633</price>
+         <stars>5</stars>
+      </article>
+      <article>
+         <categories>
+            <category>kosulje</category>
+         </categories>
+         <desc>Ova klasična, svestrana košulja pruža čist, zakačen izgled s posebnim pranjem za mekan osećaj i maksimalan komfor.</desc>
+         <id>36</id>
+         <img>./img/articles/kosulje/k10-min.jpg</img>
+         <name>Goodthreads</name>
+         <price>309</price>
+         <stars>4</stars>
+      </article>
+   </articles>
+</root>
