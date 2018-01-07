@@ -31,7 +31,7 @@
                 <a href="index.php" class="logo flex-center"><img src="img/logo-2.svg" alt="Logo 247 store"></a>
             </div>
 
-            <div class="col-12 col-md-8 md-order-3 mobile-bt">
+            <div class="md-order-3 mobile-bt">
                 <!-- Main Navigation -->
                 <nav class="main-nav">
                     <ul class="list-reset">
@@ -99,27 +99,27 @@
 
                 <form action="" class="reg-form">
                     <div class="row">
-                        <div class="col-12 col-md-6 mb-10">
+                        <div>
                             <label for="">Ime i prezime</label>
                             <input type="text" required>
                         </div>
 
-                        <div class="col-12 col-md-6 mb-10">
+                        <div>
                             <label for="">E-mail</label>
                             <input type="email" required>
                         </div>
 
-                        <div class="col-12 col-md-6 mb-10">
+                        <div>
                             <label for="">Lozinka</label>
                             <input type="password" required>
                         </div>
 
-                        <div class="col-12 col-md-6 mb-10">
+                        <div>
                             <label for="">Ponovi lozinku</label>
                             <input type="password" required>
                         </div>
                     </div>
-                    <div class="clearfix">
+                    <div>
                         <div class="reg-checkbox">
                             <input type="checkbox"><span>Prihvatam uslove koriscenja</span></a>
                         </div>

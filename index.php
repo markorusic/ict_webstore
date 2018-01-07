@@ -8,21 +8,18 @@ include('header.php'); ?>
     <!-- Hero Container -->
     <div class="hero-container">
         <div class="hero-overlay-bg">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <h1 id="shop-logo" class="lobster">247 Shop</h1>
-                    </div>
+            <div>
+                <div>
+                    <h1 id="shop-logo" class="lobster">247 Shop</h1>
+                </div>
 
-                    <div class="col-12 offset-lg-2 col-lg-8">
-                        <p>Ovde mozete pronaci ono sto ste oduvek zeleli.<br>
-                            U bilo kojim bojama i brojevima.<br>
-                    </div>
+                <div class="col-12 offset-lg-2 col-lg-8">
+                    <p>Ovde mozete pronaci ono sto ste oduvek zeleli.<br>
+                        U bilo kojim bojama i brojevima.<br>
+                </div>
 
-                    <div class="col-12">
-                        <a href="#" class="btn-white" id="hero-share-store">Podeli</a>
-                    </div>
-
+                <div>
+                    <a href="#" class="btn-white" id="hero-share-store">Podeli</a>
                 </div>
             </div>
         </div>
@@ -33,7 +30,7 @@ include('header.php'); ?>
     <div>
         <section class="text-center shop-info-section">
             <div class="flex-space-around-res">
-                <div class="">
+                <div>
                     <article>
                         <h4>Popust</h4>
                         <p>Za svaku kupljenu stvar dobijate kupon koji Vam omogucava popust na sledecu kupovinu!</p>
@@ -44,7 +41,7 @@ include('header.php'); ?>
                         </ul>
                     </article>
                 </div>
-                <div class="">
+                <div>
                     <article>
                         <h4>Placajte na rate</h4>
                         <p>Olaksajte sebi proces placanja, platite na rate ili na odlozeno!</p>
@@ -54,7 +51,7 @@ include('header.php'); ?>
                         </ul>
                     </article>
                 </div>
-                <div class="">
+                <div>
                     <article>
                         <h4>Vredne nagrade</h4>
                         <p>Svakom kupovinom ostvarujete sansu da osvojite vredne bonuse!</p>
@@ -64,7 +61,7 @@ include('header.php'); ?>
                             <li><span class="square-ul"></span> Vikend za dvoje </li>
                         </ul>
                     </article>
-                </div>                
+                </div>
             </div>
         </section>
     </div>
@@ -104,7 +101,7 @@ include('header.php'); ?>
                     <li><a href="#" data-sort="satovi">Satovi</a></li>
                     <li><a href="#" data-sort="kosulje">Kosulje</a></li>
                 </ul>
-                <div class="newsletter clearfix search-articles-by-name">
+                <div class="newsletter search-articles-by-name">
                     <input type="text" placeholder="Pretrazi po nazivu proizvoda">
                 </div>
             </div>

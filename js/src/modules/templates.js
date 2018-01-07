@@ -75,7 +75,7 @@ export default {
                 <div class="modal-container">
                     <div class="flex-space-around-res">
                         <a class="top-right" href="#"><i class="fa fa-times" aria-hidden="true"></i></a>
-                        <div class="col-12 col-md-8 cpm-bg">
+                        <div class="cpm-bg">
                             <img src="${article.img}" alt="${article.desc}" class="img-fluid">
                         </div>
 
@@ -110,7 +110,7 @@ export default {
                                     </div>
                                  
                                     <div class="actions">
-                                        <a href="#" class="btn-dark add-to-cart" data-toggle="tooltip" data-placement="top" title="Dodato u korupu!" data-animation="false">
+                                        <a href="#" class="btn-dark add-to-cart">
                                 <i class="fa fa-cart-plus font-15" aria-hidden="true"></i> | <span class="content">Dodaj u korpu</span></a>
                                     </div>
                                 </div>
