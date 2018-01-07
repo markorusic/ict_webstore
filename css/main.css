@@ -187,8 +187,12 @@ button:focus, input:focus {
     flex: 0 0 25%;
 }
 
+main.cart .cart-content {
+    overflow-x: hidden;    
+}
+
 main.cart .cart-content div >div {
-    width: calc(100% - 20px);
+    width: calc(100% - 20px);    
 }
 
 #article-photo-modal .cpm-bg {
