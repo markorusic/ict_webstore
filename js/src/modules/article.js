@@ -19,12 +19,7 @@ export default (function() {
 		cart.add(article)
 
 		if($btn) {
-			//show tooltip and hide it after 2.5 sec
 			$btn.tooltip('show')
-			setTimeout((() => { 
-				$btn.tooltip('hide')
-				$btn.off('.tooltip')
-			}), 2500)
 		}		
 	}
 

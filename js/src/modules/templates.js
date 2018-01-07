@@ -18,7 +18,7 @@ export default {
                         </div>
                         <div class="text-center store-article-info">
                             <p class="font-16">${article.name}</p>
-                            <a href="#" class="btn-white add-to-cart" data-toggle="tooltip" data-placement="top" title="Dodato u korupu!" data-animation="false">
+                            <a href="#" class="btn-white add-to-cart">
                             	<i class="fa fa-cart-plus font-15" aria-hidden="true"></i> | <span class="content">Dodaj u korpu</span></a>
                         </div>
                     </div>

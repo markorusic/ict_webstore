@@ -91,6 +91,20 @@ button:focus, input:focus {
     border: none;
 }
 
+.tooltip {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #191818;
+    color: #FFCB08;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 15px;
+}
+
 
 /*========================================================================
                             Custom Grid Layout

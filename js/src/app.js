@@ -3,6 +3,7 @@ import initializeClock from './modules/counter'
 import articles from './modules/articles'
 import cart from './modules/cart'
 
+// init app
 $(function() {
 
     var url = window.location.pathname

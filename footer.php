@@ -46,9 +46,8 @@
 <!-- jQuery -->
 <script src="./js/vendor/jquery-3.2.1.min.js"></script>
 
-<!-- Plugins -->
-<script src="./js/vendor/tether.min.js"></script>
-<script src="./js/vendor/bootstrap.min.js"></script>
+<!-- Tooltip plugin -->
+<script src="./js/vendor/custom-plugins/tooltip.js"></script>
 
 <!-- 
     Glavna skripta za funkcionalnost sajta(veb prodavnice)

@@ -68,7 +68,7 @@ export default (function() {
 		_renderTotalPrice()
 
 		$popoverCart.show('fast')
-		bindClosingEvent($popoverCart, 'popover-cart')
+		_bindClosingEvent($popoverCart, 'popover-cart')
 	}	
 
 	//render nofitication when user adds something to cart
@@ -79,7 +79,7 @@ export default (function() {
 				e.preventDefault()
 				$nofitication.fadeOut(_renderPopoverCart)
 			})
-			bindClosingEvent($nofitication, 'notification')	
+			_bindClosingEvent($nofitication, 'notification')	
 			isNotificationShowing = true
 		}
 		else {
@@ -88,7 +88,7 @@ export default (function() {
 	}
 
 	//bind closing event on passed element
-	function bindClosingEvent(el, type) {
+	function _bindClosingEvent(el, type) {
 		$(el).find('.close-notification').off().on('click', function(e) { 
 			e.preventDefault()
 			$(el).hide('fast')
