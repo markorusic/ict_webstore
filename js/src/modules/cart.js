@@ -112,7 +112,7 @@ export default (function() {
 			setTimeout(() => {
 				$('#main-row').html(`
 					<div class="col-12 text-center">
-						<h3>Vasa narudzbina je poslata, uskoro cete dobiti obavestenje!</h3>
+						<h3 class="text-center font-25">Vasa narudzbina je poslata, uskoro cete dobiti obavestenje!</h3>
 						<p>(Ovo je samo demo sajt, narudzbina nije poslata nigde.)</p>
 					</div>
 				`)
@@ -127,7 +127,7 @@ export default (function() {
 	function _renderEmptyCart() {
 		$('#main-row').html(`
 			<div class="col-12">
-				<h3 style="text-align: center;">Vasa korpa je prazna, <a href="/">ovde</a> mozete pogledati nase proizvode.</h3>
+				<h3 class="text-center font-25">Vasa korpa je prazna, <a href="/">ovde</a> mozete pogledati nase proizvode.</h3>
 			</div>
 		`)
 	}

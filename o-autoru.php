@@ -7,20 +7,16 @@ include('header.php'); ?>
     <!-- Hero Container -->
     <div class="hero-container hc-bg">
         <div class="hero-overlay-bg">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <h1 class="hero-headline">O autoru</h1>
-                    </div>
-                </div>
+            <div class="content-wrapper">
+                <h1 class="hero-headline">O autoru</h1>
             </div>
         </div>
     </div>
     <!-- Hero Container END -->
-    <div class="container">
-        <div class="row">
+    <div>
+        <div class="flex-space-around-res">
             <article class="text-center">
-                <div class="col-12 col-md-10 offset-md-1">
+                <div class="content-wrapper">
 
                     <img class="author-avatar-lg" src="https://avatars1.githubusercontent.com/u/25515080?s=460&v=4" alt="Avatar fotografija autora sajta.">
                     
@@ -34,9 +30,9 @@ include('header.php'); ?>
                 </div>
 
                 <!-- Contest Info -->
-                <section class="text-center awards-section row">
+                <section class="flex-space-around-res text-center awards-section">
 
-                    <div class="col-12 col-md-4">
+                    <div>
                         <article>
                             <h4>Javascript</h4>
                             <img class="author-tec-logo" src="./img/js-logo.png" alt="Javascript logo">
@@ -47,7 +43,7 @@ include('header.php'); ?>
                             </ul>
                         </article>
                     </div>
-                    <div class="col-12 col-md-4 awards-line">
+                    <div class="awards-line">
                         <article>
                             <h4>PHP, Laravel</h4>
                             <img class="author-tec-logo" src="./img/laravel-logo.svg" alt="Javascript logo">
@@ -58,7 +54,7 @@ include('header.php'); ?>
                             </ul>
                         </article>
                     </div>
-                    <div class="col-12 col-md-4">
+                    <div>
                         <article>
                             <h4>Baze podataka</h4>
                             <img class="author-tec-logo" src="./img/mongo-logo.jpg" alt="Javascript logo">
@@ -70,7 +66,7 @@ include('header.php'); ?>
                         </article>
                     </div>
                 </section>
-                <div class="col-12 col-md-10 offset-md-1">
+                <div>
                     <p>Korisini linkovi:</p>
                     <div class="text-center contest-read-more">
                         <a href="https://github.com/markorusic" class="btn-yellow mr-md-2" target="_blank"> <i class="fa fa-github"></i> Github</a> 

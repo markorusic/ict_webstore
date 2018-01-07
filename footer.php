@@ -1,13 +1,13 @@
 <!-- Main Footer -->
 <footer>    
     <div class="footer-strip">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 col-md-3 col-lg-2 fla">
+        <div>
+            <div class="flex-space-around-res">
+                <div class="text-center">
                     <img src="img/logo-2.svg" alt="Logo 247 store" class="footer-logo">
                 </div>
 
-                <div class="col-12 col-md-3 footer-nav">
+                <div class="footer-nav">
                     <div class="center-mobile">
                         <ul class="list-reset">
                             <li><a href="o-autoru.php">O autoru</a></li>
@@ -16,25 +16,26 @@
                     </div>
                 </div>
 
-                <div class="col-12 offset-md-1 offset-lg-2 col-md-3 newsletter-align">
+                <div class="newsletter-align">
                     <form action="" class="newsletter clearfix">
                         <input type="email" placeholder="Prijavite se na newsletter">
                         <button><i class="fa fa-envelope-o" aria-hidden="true"></i></button>
                     </form>
                 </div>
 
-                <div class="col-12 col-md-2 social-align">
+                <div class="social-align">
                     <ul class="list-reset footer-social">
                         <li><a href="https://github.com/markorusic" target="_blank"><i class="fa fa-github-square" aria-hidden="true"></i></a></li>
                         <li><a href="https://codepen.io/marko123/" target="_blank"><i class="fa fa-codepen" aria-hidden="true"></i></a>
                         </li>
+                        <li><a href="/rss/articles.xml" target="_blank"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
                     </ul>
                 </div>
 
             </div>
         </div>
     </div>
-    <div class="container">
+    <div>
         <p class="text-center copyright">
             <small>&copy; 2017. Marko Rusic. <a href="/o-prodavnici.php">Sva prava zadrzana.</a></small>
         </p>

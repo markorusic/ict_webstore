@@ -10,9 +10,6 @@
     <meta property="og:description" content="<?php echo $page_description ?>"/>
     <meta property="og:image" content="https://markorusic-247-store.herokuapp.com/img/main-hero-2.jpg" />
 
-    <!-- BOOTSTRAP -->
-    <link rel="stylesheet" href="css/bootstrap.css">
-
     <!-- FONT AWESOME  -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
@@ -27,20 +24,14 @@
 
 <!-- Main Header -->
 <header class="main-header">
-    <div class="container container-fluid">
-        <div class="row">
-            <div class="col-6 col-md-2">
+    <div>
+        <div class="flex-space-around-res">
+            <div class="flex-center md-order-1 md-abs-lt">
                 <!-- Logo -->
-                <a href="index.php" class="logo"><img src="img/logo-2.svg" alt="Logo 247 store"></a>
+                <a href="index.php" class="logo flex-center"><img src="img/logo-2.svg" alt="Logo 247 store"></a>
             </div>
 
-            <div class="col-6 col-md-2 order-md-2 last-col">
-                <ul class="list-reset log-reg">
-                    <li><a href="#" class="open-login-modal">Prijava</a></li>
-                    <li><a href="#" class="open-register-modal">Registracija</a></li>
-                </ul>
-            </div>
-            <div class="col-12 col-md-8 order-md-1 mobile-bt">
+            <div class="col-12 col-md-8 md-order-3 mobile-bt">
                 <!-- Main Navigation -->
                 <nav class="main-nav">
                     <ul class="list-reset">
@@ -51,6 +42,13 @@
                 </nav>
                 <!-- Main Navigation END -->
             </div>
+
+            <div class="md-p-10 md-order-2 last-col">
+                <ul class="list-reset log-reg">
+                    <li><a href="#" class="open-login-modal">Prijava</a></li>
+                    <li><a href="#" class="open-register-modal">Registracija</a></li>
+                </ul>
+            </div>            
         </div>
     </div>
 </header>
@@ -72,10 +70,7 @@
                 <form action="" class="login-form">
                     <input type="email" required placeholder="Email">
                     <input type="password" required placeholder="Lozinka">
-                    <div class="clearfix">
-                        <button class="btn-white" name="submit">Prijavite se</button>
-                    </div>
-
+                    <button class="btn-white" name="submit">Prijavite se</button>
                 </form>
             </div>
 

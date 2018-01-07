@@ -7,19 +7,13 @@ include('header.php'); ?>
         <!-- Hero Container -->
         <div class="hero-container hc-bg">
             <div class="hero-overlay-bg">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            <h1 class="hero-headline lobster">Vaša korpa</h1>
-                        </div>
-                    </div>
-                </div>
+                <h1 class="hero-headline lobster">Vaša korpa</h1>            
             </div>
         </div>
 
-        <div class="container" style="padding-top: 20px;">
-            <div class="row" id="main-row">
-                <div class="col-12 col-lg-7 mx-auto">
+        <div class="cart-content p-t-20">
+            <div class="flex-center-res" id="main-row" style="align-items: flex-start;">
+                <div class="p-20">
                     <h3>Korpa</h3>
                     <table class='table table-hover'>
                         <thead>
@@ -41,12 +35,12 @@ include('header.php'); ?>
                     </table>
                 </div>
 
-                <div class="col-12 col-lg-4 mx-auto">
+                <div class="p-20">
                     <h3>Unesite Vase podatke</h3>
-                    <form class="login-form pt-4 pb-4 cache-out">
+                    <form class="login-form cache-out">
                         <input class="left" type="email" required placeholder="Email">
                         <input class="left" type="text" required placeholder="Ime i prezime">
-                        <div class="clearfix">
+                        <div>
                             <button class="btn-white left submit-cart" name="submit">Poruci</button>
                         </div>
                     </form>

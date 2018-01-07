@@ -30,10 +30,10 @@ include('header.php'); ?>
     <!-- Hero Container END -->
 
     <!-- Store Info -->
-    <div class="container">
+    <div>
         <section class="text-center shop-info-section">
-            <div class="row">
-                <div class="col-12 col-md-4">
+            <div class="flex-space-around-res">
+                <div class="">
                     <article>
                         <h4>Popust</h4>
                         <p>Za svaku kupljenu stvar dobijate kupon koji Vam omogucava popust na sledecu kupovinu!</p>
@@ -44,7 +44,7 @@ include('header.php'); ?>
                         </ul>
                     </article>
                 </div>
-                <div class="col-12 col-md-4">
+                <div class="">
                     <article>
                         <h4>Placajte na rate</h4>
                         <p>Olaksajte sebi proces placanja, platite na rate ili na odlozeno!</p>
@@ -54,7 +54,7 @@ include('header.php'); ?>
                         </ul>
                     </article>
                 </div>
-                <div class="col-12 col-md-4">
+                <div class="">
                     <article>
                         <h4>Vredne nagrade</h4>
                         <p>Svakom kupovinom ostvarujete sansu da osvojite vredne bonuse!</p>
@@ -70,7 +70,7 @@ include('header.php'); ?>
     </div>
 
     <div class="shop-counter">
-        <div class="container">
+        <div>
             <h5>Specijana ponuda traje jos:</h5>
             <div class="shop-counter-clock text-center">
                 <div>
@@ -95,9 +95,8 @@ include('header.php'); ?>
     <!-- Store Info END -->
 
     <!-- Articles List -->
-    <div class="container-fluid store-articles-list">
+    <div class="store-articles-list">
         <section>
-
             <!-- Sort by -->
             <div class="sort-by">
                 <ul class="list-reset">
@@ -111,7 +110,9 @@ include('header.php'); ?>
             </div>
 
             <!-- Photos -->
-            <div class="row articles-row"></div>
+            <div class="articles-row">
+                <!-- Prikazuje se dinamicki kroz Javascipt -->
+            </div>
         </section>
     </div>
     <!-- Articles List END -->
