@@ -1,10 +1,12 @@
 <!-- Main Footer -->
-<footer>    
+<footer>
     <div class="footer-strip">
         <div>
             <div class="flex-space-around-res">
                 <div class="text-center">
-                    <img src="img/logo-2.svg" alt="Logo 247 store" class="footer-logo">
+		    <a href="/">
+	                <img src="img/logo-2.svg" alt="Logo 247 store" class="footer-logo">
+		    </a>
                 </div>
 
                 <div class="footer-nav">
