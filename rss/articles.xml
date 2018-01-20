@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<root>
-   <articles>
-      <article>
+
+<rss version="2.0">
+   <channel>
+      <title>Veb prodavnica lista proizvoda</title>
+      <link>https://markorusic-247-store.herokuapp.com/</link>
+      <description>Veb prodavnica, projekat iz veb dizajna.</description>
+      <language>sr</language>
+
+      <item>
          <categories>
             <category>cipele</category>
          </categories>
@@ -11,8 +17,8 @@
          <name>Corthay</name>
          <price>100</price>
          <stars>10</stars>
-      </article>
-      <article>
+      </item>
+      <item>
          <categories>
             <category>cipele</category>
          </categories>
@@ -22,8 +28,8 @@
          <name>Salvatore Ferragamo</name>
          <price>100</price>
          <stars>10</stars>
-      </article>
-      <article>
+      </item>
+      <item>
          <categories>
             <category>cipele</category>
          </categories>
@@ -33,8 +39,8 @@
          <name>A Testoni</name>
          <price>200</price>
          <stars>1</stars>
-      </article>
-      <article>
+      </item>
+      <item>
          <categories>
             <category>cipele</category>
          </categories>
@@ -44,8 +50,8 @@
          <name> Christian Louboutin</name>
          <price>140</price>
          <stars>4</stars>
-      </article>
-      <article>
+      </item>
+      <item>
          <categories>
             <category>cipele</category>
          </categories>
@@ -55,8 +61,8 @@
          <name>Bally</name>
          <price>400</price>
          <stars>11</stars>
-      </article>
-      <article>
+      </item>
+      <item>
          <categories>
             <category>cipele</category>
          </categories>
@@ -66,8 +72,8 @@
          <name>Berluti</name>
          <price>450</price>
          <stars>7</stars>
-      </article>
-      <article>
+      </item>
+      <item>
          <categories>
             <category>cipele</category>
          </categories>
@@ -77,8 +83,8 @@
          <name>Brunello Cucinelli</name>
          <price>190</price>
          <stars>2</stars>
-      </article>
-      <article>
+      </item>
+      <item>
          <categories>
             <category>cipele</category>
          </categories>
@@ -88,8 +94,8 @@
          <name>Bolvaint</name>
          <price>290</price>
          <stars>6</stars>
-      </article>
-      <article>
+      </item>
+      <item>
          <categories>
             <category>cipele</category>
          </categories>
@@ -99,8 +105,8 @@
          <name>Crockett And Jones</name>
          <price>490</price>
          <stars>10</stars>
-      </article>
-      <article>
+      </item>
+      <item>
          <categories>
             <category>cipele</category>
          </categories>
@@ -110,8 +116,8 @@
          <name>Edward Green</name>
          <price>190</price>
          <stars>12</stars>
-      </article>
-      <article>
+      </item>
+      <item>
          <categories>
             <category>cipele</category>
          </categories>
@@ -121,8 +127,8 @@
          <name>Giacometti</name>
          <price>190</price>
          <stars>12</stars>
-      </article>
-      <article>
+      </item>
+      <item>
          <categories>
             <category>cipele</category>
          </categories>
@@ -132,8 +138,8 @@
          <name>Santoni</name>
          <price>190</price>
          <stars>12</stars>
-      </article>
-      <article>
+      </item>
+      <item>
          <categories>
             <category>satovi</category>
          </categories>
@@ -143,8 +149,8 @@
          <name>Black Bay Bronze One</name>
          <price>1952</price>
          <stars>10</stars>
-      </article>
-      <article>
+      </item>
+      <item>
          <categories>
             <category>satovi</category>
          </categories>
@@ -154,8 +160,8 @@
          <name>Calister</name>
          <price>851</price>
          <stars>2</stars>
-      </article>
-      <article>
+      </item>
+      <item>
          <categories>
             <category>satovi</category>
          </categories>
@@ -165,8 +171,8 @@
          <name>Miyota 82s0</name>
          <price>724</price>
          <stars>3</stars>
-      </article>
-      <article>
+      </item>
+      <item>
          <categories>
             <category>satovi</category>
          </categories>
@@ -176,8 +182,8 @@
          <name>Rolex Syster Perpetual 67230</name>
          <price>798</price>
          <stars>15</stars>
-      </article>
-      <article>
+      </item>
+      <item>
          <categories>
             <category>satovi</category>
          </categories>
@@ -187,8 +193,8 @@
          <name>Rolex 16233</name>
          <price>447</price>
          <stars>9</stars>
-      </article>
-      <article>
+      </item>
+      <item>
          <categories>
             <category>satovi</category>
          </categories>
@@ -198,8 +204,8 @@
          <name>Relógios Jaragar</name>
          <price>290</price>
          <stars>6</stars>
-      </article>
-      <article>
+      </item>
+      <item>
          <categories>
             <category>satovi</category>
          </categories>
@@ -209,8 +215,8 @@
          <name>Yazole</name>
          <price>728</price>
          <stars>12</stars>
-      </article>
-      <article>
+      </item>
+      <item>
          <categories>
             <category>satovi</category>
          </categories>
@@ -220,8 +226,8 @@
          <name>Ochstin Automatic</name>
          <price>859</price>
          <stars>9</stars>
-      </article>
-      <article>
+      </item>
+      <item>
          <categories>
             <category>satovi</category>
          </categories>
@@ -231,8 +237,8 @@
          <name>Patek Philippe</name>
          <price>777</price>
          <stars>2</stars>
-      </article>
-      <article>
+      </item>
+      <item>
          <categories>
             <category>satovi</category>
          </categories>
@@ -242,8 +248,8 @@
          <name>Corleone</name>
          <price>840</price>
          <stars>12</stars>
-      </article>
-      <article>
+      </item>
+      <item>
          <categories>
             <category>satovi</category>
          </categories>
@@ -253,8 +259,8 @@
          <name>Weite</name>
          <price>821</price>
          <stars>2</stars>
-      </article>
-      <article>
+      </item>
+      <item>
          <categories>
             <category>satovi</category>
          </categories>
@@ -264,8 +270,8 @@
          <name>Yazole 602a</name>
          <price>635</price>
          <stars>7</stars>
-      </article>
-      <article>
+      </item>
+      <item>
          <categories>
             <category>kosulje</category>
          </categories>
@@ -275,8 +281,8 @@
          <name>ZARA 2017</name>
          <price>328</price>
          <stars>7</stars>
-      </article>
-      <article>
+      </item>
+      <item>
          <categories>
             <category>kosulje</category>
          </categories>
@@ -286,8 +292,8 @@
          <name>Camisa de Vestir Hombre</name>
          <price>303</price>
          <stars>11</stars>
-      </article>
-      <article>
+      </item>
+      <item>
          <categories>
             <category>kosulje</category>
          </categories>
@@ -297,8 +303,8 @@
          <name>Paul Jones</name>
          <price>484</price>
          <stars>8</stars>
-      </article>
-      <article>
+      </item>
+      <item>
          <categories>
             <category>kosulje</category>
          </categories>
@@ -308,8 +314,8 @@
          <name>Van Heusen</name>
          <price>549</price>
          <stars>7</stars>
-      </article>
-      <article>
+      </item>
+      <item>
          <categories>
             <category>kosulje</category>
          </categories>
@@ -319,8 +325,8 @@
          <name>Tom's Ware</name>
          <price>205</price>
          <stars>1</stars>
-      </article>
-      <article>
+      </item>
+      <item>
          <categories>
             <category>kosulje</category>
          </categories>
@@ -330,8 +336,8 @@
          <name>Calvin Klein</name>
          <price>476</price>
          <stars>13</stars>
-      </article>
-      <article>
+      </item>
+      <item>
          <categories>
             <category>kosulje</category>
          </categories>
@@ -341,8 +347,8 @@
          <name>Versace</name>
          <price>768</price>
          <stars>7</stars>
-      </article>
-      <article>
+      </item>
+      <item>
          <categories>
             <category>kosulje</category>
          </categories>
@@ -352,8 +358,8 @@
          <name>Versace black</name>
          <price>764</price>
          <stars>4</stars>
-      </article>
-      <article>
+      </item>
+      <item>
          <categories>
             <category>kosulje</category>
          </categories>
@@ -363,8 +369,8 @@
          <name>Dickies</name>
          <price>428</price>
          <stars>8</stars>
-      </article>
-      <article>
+      </item>
+      <item>
          <categories>
             <category>kosulje</category>
          </categories>
@@ -374,8 +380,8 @@
          <name>LOCALMODE</name>
          <price>571</price>
          <stars>10</stars>
-      </article>
-      <article>
+      </item>
+      <item>
          <categories>
             <category>kosulje</category>
          </categories>
@@ -385,8 +391,8 @@
          <name>IZOD</name>
          <price>633</price>
          <stars>5</stars>
-      </article>
-      <article>
+      </item>
+      <item>
          <categories>
             <category>kosulje</category>
          </categories>
@@ -396,6 +402,7 @@
          <name>Goodthreads</name>
          <price>309</price>
          <stars>4</stars>
-      </article>
-   </articles>
-</root>
+      </item>
+      
+   </channel>
+</rss>      
