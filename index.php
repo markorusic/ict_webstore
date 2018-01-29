@@ -108,7 +108,7 @@ include('header.php'); ?>
 
             <!-- Photos -->
             <div class="articles-row">
-                <!-- Prikazuje se dinamicki kroz Javascipt -->
+                <!-- Prikazuje se dinamicki kroz Javascript -->
             </div>
         </section>
     </div>
