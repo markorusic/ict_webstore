@@ -9,7 +9,7 @@ $ git clone https://github.com/markorusic/ict_webstore
 
 
 ```sh
-$ cd /ict_webstore/js
+$ cd ict_webstore/js
 ```
 
 Instalacija neophodnih modula
