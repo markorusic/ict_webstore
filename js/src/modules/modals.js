@@ -1,34 +1,33 @@
 export default (function() {
+  function _bindModalEvents() {
+    const $modal = $('.modal-mask')
 
-	// const $modals = $('.modal-mask')
+    const __closeModals = e => {
+      e.preventDefault()
+      $('body').css('overflow', 'auto')
+      $modal.hide()
+    }
 
-	function _bindModalEvents() {
+    $modal.on('click', __closeModals)
+    $modal
+      .find('.fa-times')
+      .parent()
+      .on('click', __closeModals)
+    $modal.find('.modal-wrapper').on('click', e => e.stopPropagation())
+  }
 
-		const $modal = $('.modal-mask')
+  function _showModal(e, selector) {
+    e.preventDefault()
+    $(selector)
+      .show()
+      .css('display', 'flex')
+    $('body').css('overflow', 'hidden')
+    _bindModalEvents()
+  }
 
-		const __closeModals = e => {
-			e.preventDefault()
-			$('body').css('overflow', 'auto')
-			$modal.hide()
-		}
-
-		$modal.on('click', __closeModals)
-		$modal.find('.fa-times').parent().on('click', __closeModals)
-		$modal.find('.modal-wrapper').on('click', e => e.stopPropagation())
-		
-	}
-
-	function _showModal(e, selector) {
-		e.preventDefault()
-		$(selector).show().css('display', 'flex')
-		$('body').css('overflow', 'hidden')
-		_bindModalEvents()
-	}
-
-	return {
-		init(data) {
-			data.forEach(el => $(el[0]).on('click', e => _showModal(e, el[1])))
-		}
-	}
-
+  return {
+    init(data) {
+      data.forEach(el => $(el[0]).on('click', e => _showModal(e, el[1])))
+    }
+  }
 })()

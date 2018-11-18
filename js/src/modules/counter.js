@@ -1,15 +1,15 @@
 function getTimeRemaining(endtime) {
-  let t = Date.parse(endtime) - Date.parse(new Date())
-  let seconds = Math.floor((t / 1000) % 60)
-  let minutes = Math.floor((t / 1000 / 60) % 60)
-  let hours = Math.floor((t / (1000 * 60 * 60)) % 24)
-  let days = Math.floor(t / (1000 * 60 * 60 * 24))
+  const total = Date.parse(endtime) - Date.parse(new Date())
+  const seconds = Math.floor((total / 1000) % 60)
+  const minutes = Math.floor((total / 1000 / 60) % 60)
+  const hours = Math.floor((total / (1000 * 60 * 60)) % 24)
+  const days = Math.floor(total / (1000 * 60 * 60 * 24))
   return {
-    'total': t,
-    'days': days,
-    'hours': hours,
-    'minutes': minutes,
-    'seconds': seconds
+    total,
+    days,
+    hours,
+    minutes,
+    seconds
   }
 }
 

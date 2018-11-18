@@ -55,7 +55,7 @@
     Glavna skripta za funkcionalnost sajta(veb prodavnice)
     Svi moduli i logika u direktorijumu /js/src
 -->
-<script src="./js/dist/bundle.js"></script>
+<script src="./js/dist/index.js"></script>
 
 </body>
 </html>

@@ -1,181 +1,194 @@
 import article from './article'
 
+const sum = [(a, b) => a + b, 0]
+
 export default (function() {
+  //main state
+  let items = []
+  let isNotificationShowing = false
+  let isPopoverCartShowing = false
 
-	//main state
-	let items = []
-	let isNotificationShowing = false
-	let isPopoverCartShowing = false
+  //cache DOM
+  const $articles = $('.cart tbody')
+  const $total = $('.total-price')
+  const $navItemsCount = $('.cart-items-count')
+  const $popoverCart = $('.popover-cart')
+  const $nofitication = $('.cart-notification')
+  const $cacheOutFrom = $('.cart').find('.cache-out')
 
+  // sync local state with localstorage
+  function _syncWithLocalStorage() {
+    localStorage.setItem(
+      'markorusic_webstore_cart_items',
+      JSON.stringify(items)
+    )
+  }
 
-	//cache DOM
-	const $articles = $('.cart tbody')
-	const $total = $('.total-price')
-	const $navItemsCount = $('.cart-items-count')
-	const $popoverCart = $('.popover-cart')
-	const $nofitication = $('.cart-notification')
-	const $cacheOutFrom = $('.cart').find('.cache-out')
+  //remove all items from cart
+  function _emtpyCart() {
+    items = []
+    _syncWithLocalStorage()
+  }
 
-	// sync local state with localstorage
-	function _syncWithLocalStorage() {
-		localStorage.setItem('markorusic_webstore_cart_items', JSON.stringify(items))
-	}
+  function _getTotalPrice() {
+    return items.map(({ count, price }) => count * price).reduce(...sum)
+  }
 
-	//remove all items from cart
-	function _emtpyCart() {
-		items = []
-		_syncWithLocalStorage()
-	}
+  function _getTotalCount() {
+    return items.map(({ count }) => count).reduce(...sum)
+  }
 
-	function _getTotalPrice() {
-		return items.map(el => el.count * el.price).reduce(((a,b) => a+b), 0)
-	}
+  //render item count on navigation
+  function _renderCount() {
+    $navItemsCount.text(`(${_getTotalCount()})`)
+  }
 
-	function _getTotalCount() {
-		return items.map(el => el.count).reduce(((a,b) => a+b), 0)
-	}
+  //render total price of cart items
+  function _renderTotalPrice() {
+    $total.text(_getTotalPrice())
+  }
 
-	//render item count on navigation
-	function _renderCount() {
-		$navItemsCount.text(`(${_getTotalCount()})`)
-	}
+  //render full cart
+  function _renderCart() {
+    $articles.html('')
+    items.forEach((item, i) =>
+      article.init(item, 'table-view', $articles, i + 1)
+    )
+    _renderTotalPrice()
+  }
 
-	//render total price of cart items
-	function _renderTotalPrice() {		
-		$total.text(_getTotalPrice())
-	}
+  //render cart popover
+  function _renderPopoverCart() {
+    isPopoverCartShowing = true
 
-	//render full cart
-	function _renderCart() {
-		$articles.html('')
-		items.forEach((item, i) => article.init(item, 'table-view', $articles, i + 1))
-		_renderTotalPrice()		
-	}
+    $popoverCart.find('tbody').html('')
 
-	//render cart popover
-	function _renderPopoverCart() {
-		isPopoverCartShowing = true
+    items.slice(0, 4).forEach((item, i) => {
+      article.init(
+        item,
+        'popover-table-view',
+        $popoverCart.find('tbody'),
+        i + 1
+      )
+    })
 
-		$popoverCart.find('tbody').html('')
+    if (items.length > 4)
+      $popoverCart
+        .find('tbody')
+        .append(
+          `<tr><td class="mt" colspan="4"><a href="/korpa.php" style="color: #fcca39; font-size: 14px;">Pogledaj sve...</a></td><tr>`
+        )
 
-		items.slice(0,4).forEach((item, i) => {
-			article.init(item, 'popover-table-view', $popoverCart.find('tbody'), i + 1)
-		})
+    _renderTotalPrice()
 
-		if(items.length > 4)
-			$popoverCart.find('tbody').append(`<tr><td class="mt" colspan="4"><a href="/korpa.php" style="color: #fcca39; font-size: 14px;">Pogledaj sve...</a></td><tr>`)
+    $popoverCart.show('fast')
+    _bindClosingEvent($popoverCart, 'popover-cart')
+  }
 
-		_renderTotalPrice()
+  //render nofitication when user adds something to cart
+  function _notify() {
+    if (!isPopoverCartShowing) {
+      $nofitication.show('fast')
+      $nofitication
+        .find('.show-popover-cart')
+        .off()
+        .on('click', function(e) {
+          e.preventDefault()
+          $nofitication.fadeOut(_renderPopoverCart)
+        })
+      _bindClosingEvent($nofitication, 'notification')
+      isNotificationShowing = true
+    } else {
+      _renderPopoverCart()
+    }
+  }
 
-		$popoverCart.show('fast')
-		_bindClosingEvent($popoverCart, 'popover-cart')
-	}	
+  //bind closing event on passed element
+  function _bindClosingEvent(el, type) {
+    $(el)
+      .find('.close-notification')
+      .off()
+      .on('click', function(e) {
+        e.preventDefault()
+        $(el).hide('fast')
 
-	//render nofitication when user adds something to cart
-	function _notify() {
-		if(!isPopoverCartShowing) {
-			$nofitication.show('fast')
-			$nofitication.find('.show-popover-cart').off().on('click', function(e) {
-				e.preventDefault()
-				$nofitication.fadeOut(_renderPopoverCart)
-			})
-			_bindClosingEvent($nofitication, 'notification')	
-			isNotificationShowing = true
-		}
-		else {
-			_renderPopoverCart()
-		}
-	}
+        if (type == 'notification') isNotificationShowing = false
+        if (type == 'popover-cart') isPopoverCartShowing = false
+      })
+  }
 
-	//bind closing event on passed element
-	function _bindClosingEvent(el, type) {
-		$(el).find('.close-notification').off().on('click', function(e) { 
-			e.preventDefault()
-			$(el).hide('fast')
+  function _submitOrder(e) {
+    e.preventDefault()
+    if (items.length > 0) {
+      $(this)
+        .find('button')
+        .css({
+          color: 'black',
+          fontSize: '10px'
+        })
+        .text('Molimo Vas da sacekate...')
 
-			if(type == 'notification')
-				isNotificationShowing = false
-			if(type == 'popover-cart')
-				isPopoverCartShowing = false
-		})
-	}
-
-
-	function _submitOrder(e) {
-		e.preventDefault()
-		if(items.length > 0) {
-			$(this).find('button').css({
-				'color': 'black',
-				'fontSize': '10px'
-			}).text('Molimo Vas da sacekate...')
-
-			setTimeout(() => {
-				$('#main-row').html(`
+      setTimeout(() => {
+        $('#main-row').html(`
 					<div class="col-12 text-center">
 						<h3 class="text-center font-25">Vasa narudzbina je poslata, uskoro cete dobiti obavestenje!</h3>
 						<p>(Ovo je samo demo sajt, narudzbina nije poslata nigde.)</p>
 					</div>
 				`)
-				_emtpyCart()
-				_renderCount()
-			}, 1500)			
-		}
-	}
+        _emtpyCart()
+        _renderCount()
+      }, 1500)
+    }
+  }
 
-
-	// triggers on cart page if cart is empty
-	function _renderEmptyCart() {
-		$('#main-row').html(`
+  // triggers on cart page if cart is empty
+  function _renderEmptyCart() {
+    $('#main-row').html(`
 			<div class="col-12">
 				<h3 class="text-center font-25">Vasa korpa je prazna, <a href="/">ovde</a> mozete pogledati nase proizvode.</h3>
 			</div>
 		`)
-	}
+  }
 
-	return {
-		init() {
-			let localStorageCart = JSON.parse(localStorage.getItem('markorusic_webstore_cart_items'))
-			if(localStorageCart)
-				items = localStorageCart
-			_renderCount()
-		},
+  return {
+    init() {
+      let localStorageCart = JSON.parse(
+        localStorage.getItem('markorusic_webstore_cart_items')
+      )
+      if (localStorageCart) items = localStorageCart
+      _renderCount()
+    },
 
-		initCacheOutForm() {
-			if(items.length == 0)
-				_renderEmptyCart()
-			else 
-				$cacheOutFrom.on('submit', _submitOrder)
-		},
+    initCacheOutForm() {
+      if (items.length == 0) _renderEmptyCart()
+      else $cacheOutFrom.on('submit', _submitOrder)
+    },
 
-		add(item) {
-			let cartItem = items.find(el => el.id == item.id)
-			if(!cartItem){
-				items.push({...item, 'count': 1})
-			}
-			else {
-				cartItem.count++
-				items.map(el => el.id == item.id? cartItem: el)
-			}			
-			_renderCount()
-			_notify()
-			_syncWithLocalStorage()
-		},
+    add(item) {
+      let cartItem = items.find(el => el.id == item.id)
+      if (!cartItem) {
+        items.push({ ...item, count: 1 })
+      } else {
+        cartItem.count++
+        items.map(el => (el.id == item.id ? cartItem : el))
+      }
+      _renderCount()
+      _notify()
+      _syncWithLocalStorage()
+    },
 
-		remove(id) {
-			items = items.filter(e => e.id != id)
-			_renderCount()
+    remove(id) {
+      items = items.filter(e => e.id != id)
+      _renderCount()
 
-			if(items.length == 0)
-				_renderEmptyCart()
-			else 
-				this.render()
+      if (items.length == 0) _renderEmptyCart()
+      else this.render()
 
-			_syncWithLocalStorage()
-		},
+      _syncWithLocalStorage()
+    },
 
-		render() {
-			_renderCart()
-		}
-
-	}
+    render() {
+      _renderCart()
+    }
+  }
 })()
