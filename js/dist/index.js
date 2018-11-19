@@ -116,21 +116,21 @@ var _default = function () {
   function _bindModalEvents() {
     var $modal = $('.modal-mask');
 
-    var __closeModals = function __closeModals(e) {
-      e.preventDefault();
+    var __closeModals = function __closeModals(event) {
+      event.preventDefault();
       $('body').css('overflow', 'auto');
       $modal.hide();
     };
 
     $modal.on('click', __closeModals);
     $modal.find('.fa-times').parent().on('click', __closeModals);
-    $modal.find('.modal-wrapper').on('click', function (e) {
-      return e.stopPropagation();
+    $modal.find('.modal-wrapper').on('click', function (event) {
+      return event.stopPropagation();
     });
   }
 
-  function _showModal(e, selector) {
-    e.preventDefault();
+  function _showModal(event, selector) {
+    event.preventDefault();
     $(selector).show().css('display', 'flex');
     $('body').css('overflow', 'hidden');
 
@@ -140,8 +140,8 @@ var _default = function () {
   return {
     init: function init(data) {
       data.forEach(function (el) {
-        return $(el[0]).on('click', function (e) {
-          return _showModal(e, el[1]);
+        return $(el[0]).on('click', function (event) {
+          return _showModal(event, el[1]);
         });
       });
     }
@@ -198,455 +198,47 @@ function initializeClock(rootElement) {
 
 var _default = initializeClock;
 exports.default = _default;
-},{}],"src/modules/helpers/url.js":[function(require,module,exports) {
+},{}],"src/helpers/url.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-
-var _default = function () {
-  var params = null; //parse url get parameters to array of js key: value objects
-
-  function _parseUrl() {
-    params = location.search == '' ? [] : location.search.slice(1).split('&').map(function (e) {
-      return {
-        key: e.split('=')[0],
-        value: e.split('=')[1]
-      };
-    });
-  } //parse js array to query string and push state to it's value
-
-
-  function _createQueryString() {
-    return (params.length > 0 ? '?' : '') + params.map(function (_ref) {
-      var key = _ref.key,
-          value = _ref.value;
-      return key + '=' + value;
-    }).join('&');
-  }
-
-  function _updateUrl() {
-    window.history.pushState('', '', location.pathname + _createQueryString());
-  }
-
-  return {
-    getParam: function getParam(str) {
-      _parseUrl();
-
-      var param = params.find(function (_ref2) {
-        var key = _ref2.key;
-        return key === str;
-      });
-      return param ? param.value : null;
-    },
-    setParam: function setParam(param, value) {
-      _parseUrl();
-
-      var isFound = false; //look for param, if found update, if not create new
-
-      params = params.map(function (currentParam) {
-        if (currentParam.key === param) {
-          currentParam.value = value;
-          isFound = true;
-        }
-
-        return currentParam;
-      });
-
-      if (!isFound) {
-        params.push({
-          key: param,
-          value: value
-        });
-      }
-
-      _updateUrl();
-    },
-    removeParam: function removeParam(str) {
-      _parseUrl();
-
-      params = params.filter(function (_ref3) {
-        var key = _ref3.key;
-        return key !== str;
-      });
-
-      _updateUrl();
-    }
-  };
-}();
-
-exports.default = _default;
-},{}],"src/modules/cart.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _article = _interopRequireDefault(require("./article"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var sum = [function (a, b) {
-  return a + b;
-}, 0];
-
-var _default = function () {
-  //main state
-  var items = [];
-  var isNotificationShowing = false;
-  var isPopoverCartShowing = false; //cache DOM
-
-  var $articles = $('.cart tbody');
-  var $total = $('.total-price');
-  var $navItemsCount = $('.cart-items-count');
-  var $popoverCart = $('.popover-cart');
-  var $nofitication = $('.cart-notification');
-  var $cacheOutFrom = $('.cart').find('.cache-out'); // sync local state with localstorage
-
-  function _syncWithLocalStorage() {
-    localStorage.setItem('markorusic_webstore_cart_items', JSON.stringify(items));
-  } //remove all items from cart
-
-
-  function _emtpyCart() {
-    items = [];
-
-    _syncWithLocalStorage();
-  }
-
-  function _getTotalPrice() {
-    var _items$map;
-
-    return (_items$map = items.map(function (_ref) {
-      var count = _ref.count,
-          price = _ref.price;
-      return count * price;
-    })).reduce.apply(_items$map, sum);
-  }
-
-  function _getTotalCount() {
-    var _items$map2;
-
-    return (_items$map2 = items.map(function (_ref2) {
-      var count = _ref2.count;
-      return count;
-    })).reduce.apply(_items$map2, sum);
-  } //render item count on navigation
-
-
-  function _renderCount() {
-    $navItemsCount.text("(".concat(_getTotalCount(), ")"));
-  } //render total price of cart items
-
-
-  function _renderTotalPrice() {
-    $total.text(_getTotalPrice());
-  } //render full cart
-
-
-  function _renderCart() {
-    $articles.html('');
-    items.forEach(function (item, i) {
-      return _article.default.init(item, 'table-view', $articles, i + 1);
-    });
-
-    _renderTotalPrice();
-  } //render cart popover
-
-
-  function _renderPopoverCart() {
-    isPopoverCartShowing = true;
-    $popoverCart.find('tbody').html('');
-    items.slice(0, 4).forEach(function (item, i) {
-      _article.default.init(item, 'popover-table-view', $popoverCart.find('tbody'), i + 1);
-    });
-    if (items.length > 4) $popoverCart.find('tbody').append("<tr><td class=\"mt\" colspan=\"4\"><a href=\"/korpa.php\" style=\"color: #fcca39; font-size: 14px;\">Pogledaj sve...</a></td><tr>");
-
-    _renderTotalPrice();
-
-    $popoverCart.show('fast');
-
-    _bindClosingEvent($popoverCart, 'popover-cart');
-  } //render nofitication when user adds something to cart
-
-
-  function _notify() {
-    if (!isPopoverCartShowing) {
-      $nofitication.show('fast');
-      $nofitication.find('.show-popover-cart').off().on('click', function (e) {
-        e.preventDefault();
-        $nofitication.fadeOut(_renderPopoverCart);
-      });
-
-      _bindClosingEvent($nofitication, 'notification');
-
-      isNotificationShowing = true;
-    } else {
-      _renderPopoverCart();
-    }
-  } //bind closing event on passed element
-
-
-  function _bindClosingEvent(el, type) {
-    $(el).find('.close-notification').off().on('click', function (e) {
-      e.preventDefault();
-      $(el).hide('fast');
-      if (type == 'notification') isNotificationShowing = false;
-      if (type == 'popover-cart') isPopoverCartShowing = false;
-    });
-  }
-
-  function _submitOrder(e) {
-    e.preventDefault();
-
-    if (items.length > 0) {
-      $(this).find('button').css({
-        color: 'black',
-        fontSize: '10px'
-      }).text('Molimo Vas da sacekate...');
-      setTimeout(function () {
-        $('#main-row').html("\n\t\t\t\t\t<div class=\"col-12 text-center\">\n\t\t\t\t\t\t<h3 class=\"text-center font-25\">Vasa narudzbina je poslata, uskoro cete dobiti obavestenje!</h3>\n\t\t\t\t\t\t<p>(Ovo je samo demo sajt, narudzbina nije poslata nigde.)</p>\n\t\t\t\t\t</div>\n\t\t\t\t");
-
-        _emtpyCart();
-
-        _renderCount();
-      }, 1500);
-    }
-  } // triggers on cart page if cart is empty
-
-
-  function _renderEmptyCart() {
-    $('#main-row').html("\n\t\t\t<div class=\"col-12\">\n\t\t\t\t<h3 class=\"text-center font-25\">Vasa korpa je prazna, <a href=\"/\">ovde</a> mozete pogledati nase proizvode.</h3>\n\t\t\t</div>\n\t\t");
-  }
-
-  return {
-    init: function init() {
-      var localStorageCart = JSON.parse(localStorage.getItem('markorusic_webstore_cart_items'));
-      if (localStorageCart) items = localStorageCart;
-
-      _renderCount();
-    },
-    initCacheOutForm: function initCacheOutForm() {
-      if (items.length == 0) _renderEmptyCart();else $cacheOutFrom.on('submit', _submitOrder);
-    },
-    add: function add(item) {
-      var cartItem = items.find(function (el) {
-        return el.id == item.id;
-      });
-
-      if (!cartItem) {
-        items.push(_objectSpread({}, item, {
-          count: 1
-        }));
-      } else {
-        cartItem.count++;
-        items.map(function (el) {
-          return el.id == item.id ? cartItem : el;
-        });
-      }
-
-      _renderCount();
-
-      _notify();
-
-      _syncWithLocalStorage();
-    },
-    remove: function remove(id) {
-      items = items.filter(function (e) {
-        return e.id != id;
-      });
-
-      _renderCount();
-
-      if (items.length == 0) _renderEmptyCart();else this.render();
-
-      _syncWithLocalStorage();
-    },
-    render: function render() {
-      _renderCart();
-    }
-  };
-}();
-
-exports.default = _default;
-},{"./article":"src/modules/article.js"}],"src/modules/templates.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
 var _default = {
-  article: function article(_ref) {
-    var img = _ref.img,
-        price = _ref.price,
-        stars = _ref.stars,
-        name = _ref.name;
-    return "\n    <div class=\"store-item-wrapper\">\n        <article class=\"store-articles-list-item\"\n                style=\"background-image: url('".concat(img, "');\">\n            <div class=\"cpli-overlay\"><!-- class overlay --></div>\n            <div class=\"cpli-content\">\n                <div class=\"article-info-strip\">\n                    <div>\n                        <a href=\"#\"><i class=\"fa fa-eur\" aria-hidden=\"true\"></i></a>\n                        <span>").concat(price, "</span>\n                    </div>\n                    <div>\n                        <a href=\"#\"><i class=\"fa fa-star\" aria-hidden=\"true\"></i></a>\n                        <span>").concat(stars, "</span>\n                    </div>\n                </div>\n                <div class=\"text-center store-article-info\">\n                    <p class=\"font-16\">").concat(name, "</p>\n                    <a href=\"#\" class=\"btn-white add-to-cart\">\n                        <i class=\"fa fa-cart-plus font-15\" aria-hidden=\"true\"></i> | <span class=\"content\">Dodaj u korpu</span></a>\n                </div>\n            </div>\n        </article>\n    </div>\n    ");
+  params: window.location.search === '' ? {} : window.location.search.slice(1).split('&').reduce(function (acc, curr) {
+    return _objectSpread({}, acc, _defineProperty({}, curr.split('=')[0], curr.split('=')[1]));
+  }, {}),
+  getParamsString: function getParamsString() {
+    var _this = this;
+
+    var str = Object.keys(this.params).map(function (key) {
+      return "".concat(key, "=").concat(_this.params[key]);
+    }).join('&');
+    return str === '' ? str : "?".concat(str);
   },
-  articleTr: function articleTr(_ref2, num) {
-    var img = _ref2.img,
-        count = _ref2.count,
-        name = _ref2.name,
-        price = _ref2.price;
-    return "\n    <tr>\n        <td>#".concat(num, "</td>\n        <td class=\"rl-avatar-td\">\n            <a href=\"#\">\n                <div class=\"article-avatar\"\n                    style=\"background-image: url('").concat(img, "');\"></div>\n            </a>\n        </td>\n        <td>\n            <span>\n                ").concat(name, "\n            </span>\n        </td>\n        <td>").concat(count, "</td>\n        <td>").concat(price * count, "</td>\n        <td>\n            <a href=\"#\" class=\"remove-form-cart btn btn-danger-btn-sm\"><i class=\"fa fa-times\"></i></a>\n        </td>\n    </tr>\n    ");
+  updateUrlParams: function updateUrlParams(value) {
+    window.history.pushState('', '', window.location.pathname + this.getParamsString());
   },
-  articleTrPopover: function articleTrPopover(_ref3) {
-    var img = _ref3.img,
-        name = _ref3.name,
-        count = _ref3.count,
-        price = _ref3.price;
-    return "\n    <tr>\n        <td>\n            <a href=\"#\">\n                <div class=\"article-avatar\" style=\"background-image: url('".concat(img, "');\"></div>\n            </a>\n        </td>\n        <td>").concat(name, "</td>\n        <td>").concat(count, "</td>\n        <td>").concat(price * count, "</td>\n    </tr>\n    ");
+  getParam: function getParam(param) {
+    return this.params[param];
   },
-  articleModal: function articleModal(_ref4) {
-    var img = _ref4.img,
-        name = _ref4.name,
-        count = _ref4.count,
-        price = _ref4.price,
-        desc = _ref4.desc,
-        stars = _ref4.stars,
-        categories = _ref4.categories;
-    return "\n    <div class=\"modal-mask shop-photo-modal\" id=\"article-photo-modal\" style=\"display: none;\">\n        <div class=\"container\">\n            <div class=\"modal-wrapper\">\n                <div class=\"modal-container\">\n                    <div class=\"flex-space-around-res\">\n                        <a class=\"top-right\" href=\"#\"><i class=\"fa fa-times\" aria-hidden=\"true\"></i></a>\n                        <div class=\"cpm-bg\">\n                            <img src=\"".concat(img, "\" alt=\"").concat(desc, "\" class=\"img-fluid\">\n                        </div>\n\n                        <div class=\"cpm-bg-fff p-20\">\n                            <div class=\"modal-body\">\n\n                                <!-- hdr -->\n                                <div class=\"shop-photo-modal-header\">\n                                    <div class=\"hdr-wrapper\">\n                                        <h2>").concat(name, "</h2>                                        \n                                    </div>\n\n                                    <!-- Vote strip -->\n                                    <p class=\"article-categories\">Katogirije: <span>").concat(categories.join(' | '), "</span></p>\n                                </div>\n\n                                <div class=\"article-info-strip\">\n                                    <div class=\"vote-div\">\n                                        <a href=\"#\"><i class=\"fa fa-eur\" aria-hidden=\"true\"></i></a>\n                                        <span>").concat(price, "</span>\n                                    </div>\n                                    <div>\n                                        <a href=\"#\"><i class=\"fa fa-star\" aria-hidden=\"true\"></i></a>\n                                        <span>").concat(stars, "</span>\n                                    </div>\n                                </div>\n\n                                <!-- body -->\n                                <div class=\"shop-photo-modal-body\">\n                                    <div>\n                                        <p class=\"init-line-height about-shop-article\">").concat(desc, "</p>\n                                    </div>\n                                \n                                    <div class=\"actions\">\n                                        <a href=\"#\" class=\"btn-dark add-to-cart\">\n                                <i class=\"fa fa-cart-plus font-15\" aria-hidden=\"true\"></i> | <span class=\"content\">Dodaj u korpu</span></a>\n                                    </div>\n                                </div>\n\n                            </div>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n        ");
+  setParam: function setParam(param, value) {
+    this.params[param] = value;
+    this.updateUrlParams();
+  },
+  removeParam: function removeParam(param) {
+    delete this.params[param];
+    this.updateUrlParams();
   }
 };
 exports.default = _default;
-},{}],"src/modules/article.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _cart = _interopRequireDefault(require("./cart"));
-
-var _templates = _interopRequireDefault(require("./templates"));
-
-var _url = _interopRequireDefault(require("./helpers/url"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var _default = function () {
-  //state
-  var article = null; //cahce DOM
-
-  var $modal = null;
-  var $domElement = null;
-  var $root = null; //private methods
-
-  function _addToCart(article, $btn, event) {
-    event.preventDefault();
-    event.stopPropagation();
-
-    _cart.default.add(article);
-
-    if ($btn) {
-      $btn.tooltip('show');
-    }
-  }
-
-  function _removeFromCart(articleId, event) {
-    event.preventDefault();
-    event.stopPropagation();
-
-    _cart.default.remove(articleId);
-  }
-
-  function _openLightBox(article, event) {
-    if (event) {
-      event.preventDefault();
-    }
-
-    $('body').css('overflow', 'hidden').append(_templates.default.articleModal(article));
-    $modal = $('#article-photo-modal');
-    $modal.show();
-
-    _bindModalEvents(article);
-
-    _url.default.setParam('articleId', article.id);
-  }
-
-  function _closeLightBox(event) {
-    event.preventDefault();
-    $modal.remove();
-    $modal = null;
-    $('body').css('overflow-y', 'scroll');
-
-    _url.default.removeParam('articleId');
-  }
-
-  function _bindModalEvents(article) {
-    //stop event propagation on all child elements(don't close modal on children click)
-    $modal.children().on('click', function (event) {
-      return event.stopPropagation();
-    }); //closing events
-
-    $modal.find('.fa-times').on('click', _closeLightBox);
-    $modal.on('click', _closeLightBox); //add article to cart event
-
-    $modal.find('.add-to-cart').on('click', _addToCart.bind(this, article, $modal.find('.add-to-cart')));
-  } //public methods
-
-
-  return {
-    init: function init(article, type, $rootElement, num) {
-      $root = $rootElement;
-      this.setArticle(article);
-      this.render(type, num);
-      $domElement = $root.children().last();
-      this.bindEvents(article, type);
-    },
-    render: function render(type, num) {
-      var template = '';
-
-      switch (type) {
-        case 'box-view':
-          template = _templates.default.article(article);
-          break;
-
-        case 'table-view':
-          template = _templates.default.articleTr(article, num);
-          break;
-
-        case 'popover-table-view':
-          template = _templates.default.articleTrPopover(article, num);
-          break;
-
-        default:
-          throw new Error("Invalid type: ".concat(type));
-          break;
-      }
-
-      $root.append(template);
-    },
-    getArticle: function getArticle() {
-      return article;
-    },
-    setArticle: function setArticle(newArticle) {
-      article = newArticle;
-    },
-    showArticle: function showArticle(article) {
-      _openLightBox(article);
-    },
-    bindEvents: function bindEvents(article, type) {
-      if (type == 'box-view') {
-        $domElement.on('click', _openLightBox.bind(this, article));
-        $domElement.find('.add-to-cart').on('click', _addToCart.bind(this, article, $domElement.find('.add-to-cart')));
-      } else if (type == 'table-view') $domElement.find('.remove-form-cart').on('click', _removeFromCart.bind(this, article.id));
-    }
-  };
-}();
-
-exports.default = _default;
-},{"./cart":"src/modules/cart.js","./templates":"src/modules/templates.js","./helpers/url":"src/modules/helpers/url.js"}],"src/modules/helpers/mockUpData.js":[function(require,module,exports) {
+},{}],"src/mockup/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -945,7 +537,7 @@ var _default = {
   }]
 };
 exports.default = _default;
-},{}],"src/modules/articles.js":[function(require,module,exports) {
+},{}],"src/modules/cart.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -953,11 +545,385 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _url = _interopRequireDefault(require("./helpers/url"));
-
 var _article = _interopRequireDefault(require("./article"));
 
-var _mockUpData = _interopRequireDefault(require("./helpers/mockUpData"));
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var sum = [function (a, b) {
+  return a + b;
+}, 0];
+
+var _default = function () {
+  //main state
+  var items = [];
+  var isNotificationShowing = false;
+  var isPopoverCartShowing = false; //cache DOM
+
+  var $articles = $('.cart tbody');
+  var $total = $('.total-price');
+  var $navItemsCount = $('.cart-items-count');
+  var $popoverCart = $('.popover-cart');
+  var $nofitication = $('.cart-notification');
+  var $cacheOutFrom = $('.cart').find('.cache-out'); // sync local state with localstorage
+
+  function _syncWithLocalStorage() {
+    localStorage.setItem('markorusic_webstore_cart_items', JSON.stringify(items));
+  } //remove all items from cart
+
+
+  function _emtpyCart() {
+    items = [];
+
+    _syncWithLocalStorage();
+  }
+
+  function _getTotalPrice() {
+    var _items$map;
+
+    return (_items$map = items.map(function (_ref) {
+      var count = _ref.count,
+          price = _ref.price;
+      return count * price;
+    })).reduce.apply(_items$map, sum);
+  }
+
+  function _getTotalCount() {
+    var _items$map2;
+
+    return (_items$map2 = items.map(function (_ref2) {
+      var count = _ref2.count;
+      return count;
+    })).reduce.apply(_items$map2, sum);
+  } //render item count on navigation
+
+
+  function _renderCount() {
+    $navItemsCount.text("(".concat(_getTotalCount(), ")"));
+  } //render total price of cart items
+
+
+  function _renderTotalPrice() {
+    $total.text(_getTotalPrice());
+  } //render full cart
+
+
+  function _renderCart() {
+    $articles.html('');
+    items.forEach(function (item, i) {
+      return _article.default.init(item, 'table-view', $articles, i + 1);
+    });
+
+    _renderTotalPrice();
+  } //render cart popover
+
+
+  function _renderPopoverCart() {
+    isPopoverCartShowing = true;
+    $popoverCart.find('tbody').html('');
+    items.slice(0, 4).forEach(function (item, i) {
+      _article.default.init(item, 'popover-table-view', $popoverCart.find('tbody'), i + 1);
+    });
+    if (items.length > 4) $popoverCart.find('tbody').append("<tr><td class=\"mt\" colspan=\"4\"><a href=\"/korpa.php\" style=\"color: #fcca39; font-size: 14px;\">Pogledaj sve...</a></td><tr>");
+
+    _renderTotalPrice();
+
+    $popoverCart.show('fast');
+
+    _bindClosingEvent($popoverCart, 'popover-cart');
+  } //render nofitication when user adds something to cart
+
+
+  function _notify() {
+    if (!isPopoverCartShowing) {
+      $nofitication.show('fast');
+      $nofitication.find('.show-popover-cart').off().on('click', function (event) {
+        event.preventDefault();
+        $nofitication.fadeOut(_renderPopoverCart);
+      });
+
+      _bindClosingEvent($nofitication, 'notification');
+
+      isNotificationShowing = true;
+    } else {
+      _renderPopoverCart();
+    }
+  } //bind closing event on passed element
+
+
+  function _bindClosingEvent(el, type) {
+    $(el).find('.close-notification').off().on('click', function (e) {
+      e.preventDefault();
+      $(el).hide('fast');
+      if (type === 'notification') isNotificationShowing = false;
+      if (type === 'popover-cart') isPopoverCartShowing = false;
+    });
+  }
+
+  function _submitOrder(e) {
+    e.preventDefault();
+
+    if (items.length > 0) {
+      $(this).find('button').css({
+        color: 'black',
+        fontSize: '10px'
+      }).text('Molimo Vas da sacekate...');
+      setTimeout(function () {
+        $('#main-row').html("\n\t\t\t\t\t<div class=\"col-12 text-center\">\n\t\t\t\t\t\t<h3 class=\"text-center font-25\">Vasa narudzbina je poslata, uskoro cete dobiti obavestenje!</h3>\n\t\t\t\t\t\t<p>(Ovo je samo demo sajt, narudzbina nije poslata nigde.)</p>\n\t\t\t\t\t</div>\n\t\t\t\t");
+
+        _emtpyCart();
+
+        _renderCount();
+      }, 1500);
+    }
+  } // triggers on cart page if cart is empty
+
+
+  function _renderEmptyCart() {
+    $('#main-row').html("\n\t\t\t<div class=\"col-12\">\n\t\t\t\t<h3 class=\"text-center font-25\">Vasa korpa je prazna, <a href=\"/\">ovde</a> mozete pogledati nase proizvode.</h3>\n\t\t\t</div>\n\t\t");
+  }
+
+  return {
+    init: function init() {
+      var localStorageCart = JSON.parse(localStorage.getItem('markorusic_webstore_cart_items'));
+      if (localStorageCart) items = localStorageCart;
+
+      _renderCount();
+    },
+    initCacheOutForm: function initCacheOutForm() {
+      if (items.length == 0) _renderEmptyCart();else $cacheOutFrom.on('submit', _submitOrder);
+    },
+    add: function add(item) {
+      var cartItem = items.find(function (el) {
+        return el.id == item.id;
+      });
+
+      if (!cartItem) {
+        items.push(_objectSpread({}, item, {
+          count: 1
+        }));
+      } else {
+        cartItem.count++;
+        items.map(function (el) {
+          return el.id == item.id ? cartItem : el;
+        });
+      }
+
+      _renderCount();
+
+      _notify();
+
+      _syncWithLocalStorage();
+    },
+    remove: function remove(id) {
+      items = items.filter(function (e) {
+        return e.id != id;
+      });
+
+      _renderCount();
+
+      if (items.length == 0) _renderEmptyCart();else this.render();
+
+      _syncWithLocalStorage();
+    },
+    render: function render() {
+      _renderCart();
+    }
+  };
+}();
+
+exports.default = _default;
+},{"./article":"src/modules/article.js"}],"src/modules/templates.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _default = {
+  article: function article(_ref) {
+    var img = _ref.img,
+        price = _ref.price,
+        stars = _ref.stars,
+        name = _ref.name;
+    return "\n    <div class=\"store-item-wrapper\">\n        <article class=\"store-articles-list-item\"\n                style=\"background-image: url('".concat(img, "');\">\n            <div class=\"cpli-overlay\"><!-- class overlay --></div>\n            <div class=\"cpli-content\">\n                <div class=\"article-info-strip\">\n                    <div>\n                        <a href=\"#\"><i class=\"fa fa-eur\" aria-hidden=\"true\"></i></a>\n                        <span>").concat(price, "</span>\n                    </div>\n                    <div>\n                        <a href=\"#\"><i class=\"fa fa-star\" aria-hidden=\"true\"></i></a>\n                        <span>").concat(stars, "</span>\n                    </div>\n                </div>\n                <div class=\"text-center store-article-info\">\n                    <p class=\"font-16\">").concat(name, "</p>\n                    <a href=\"#\" class=\"btn-white add-to-cart\">\n                        <i class=\"fa fa-cart-plus font-15\" aria-hidden=\"true\"></i> | <span class=\"content\">Dodaj u korpu</span></a>\n                </div>\n            </div>\n        </article>\n    </div>\n    ");
+  },
+  articleTr: function articleTr(_ref2, num) {
+    var img = _ref2.img,
+        count = _ref2.count,
+        name = _ref2.name,
+        price = _ref2.price;
+    return "\n    <tr>\n        <td>#".concat(num, "</td>\n        <td class=\"rl-avatar-td\">\n            <a href=\"#\">\n                <div class=\"article-avatar\"\n                    style=\"background-image: url('").concat(img, "');\"></div>\n            </a>\n        </td>\n        <td>\n            <span>\n                ").concat(name, "\n            </span>\n        </td>\n        <td>").concat(count, "</td>\n        <td>").concat(price * count, "</td>\n        <td>\n            <a href=\"#\" class=\"remove-form-cart btn btn-danger-btn-sm\"><i class=\"fa fa-times\"></i></a>\n        </td>\n    </tr>\n    ");
+  },
+  articleTrPopover: function articleTrPopover(_ref3) {
+    var img = _ref3.img,
+        name = _ref3.name,
+        count = _ref3.count,
+        price = _ref3.price;
+    return "\n    <tr>\n        <td>\n            <a href=\"#\">\n                <div class=\"article-avatar\" style=\"background-image: url('".concat(img, "');\"></div>\n            </a>\n        </td>\n        <td>").concat(name, "</td>\n        <td>").concat(count, "</td>\n        <td>").concat(price * count, "</td>\n    </tr>\n    ");
+  },
+  articleModal: function articleModal(_ref4) {
+    var img = _ref4.img,
+        name = _ref4.name,
+        count = _ref4.count,
+        price = _ref4.price,
+        desc = _ref4.desc,
+        stars = _ref4.stars,
+        categories = _ref4.categories;
+    return "\n    <div class=\"modal-mask shop-photo-modal\" id=\"article-photo-modal\" style=\"display: none;\">\n        <div class=\"container\">\n            <div class=\"modal-wrapper\">\n                <div class=\"modal-container\">\n                    <div class=\"flex-space-around-res\">\n                        <a class=\"top-right\" href=\"#\"><i class=\"fa fa-times\" aria-hidden=\"true\"></i></a>\n                        <div class=\"cpm-bg\">\n                            <img src=\"".concat(img, "\" alt=\"").concat(desc, "\" class=\"img-fluid\">\n                        </div>\n\n                        <div class=\"cpm-bg-fff p-20\">\n                            <div class=\"modal-body\">\n\n                                <!-- hdr -->\n                                <div class=\"shop-photo-modal-header\">\n                                    <div class=\"hdr-wrapper\">\n                                        <h2>").concat(name, "</h2>                                        \n                                    </div>\n\n                                    <!-- Vote strip -->\n                                    <p class=\"article-categories\">Katogirije: <span>").concat(categories.join(' | '), "</span></p>\n                                </div>\n\n                                <div class=\"article-info-strip\">\n                                    <div class=\"vote-div\">\n                                        <a href=\"#\"><i class=\"fa fa-eur\" aria-hidden=\"true\"></i></a>\n                                        <span>").concat(price, "</span>\n                                    </div>\n                                    <div>\n                                        <a href=\"#\"><i class=\"fa fa-star\" aria-hidden=\"true\"></i></a>\n                                        <span>").concat(stars, "</span>\n                                    </div>\n                                </div>\n\n                                <!-- body -->\n                                <div class=\"shop-photo-modal-body\">\n                                    <div>\n                                        <p class=\"init-line-height about-shop-article\">").concat(desc, "</p>\n                                    </div>\n                                \n                                    <div class=\"actions\">\n                                        <a href=\"#\" class=\"btn-dark add-to-cart\">\n                                <i class=\"fa fa-cart-plus font-15\" aria-hidden=\"true\"></i> | <span class=\"content\">Dodaj u korpu</span></a>\n                                    </div>\n                                </div>\n\n                            </div>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n        ");
+  }
+};
+exports.default = _default;
+},{}],"src/modules/article.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _url = _interopRequireDefault(require("../helpers/url"));
+
+var _cart = _interopRequireDefault(require("./cart"));
+
+var _templates = _interopRequireDefault(require("./templates"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var VIEWS = {
+  BOX: 'box-view',
+  TABLE: 'table-view',
+  POPOVER_TABLE: 'popover-table-view'
+};
+
+var _default = function () {
+  //state
+  var article = null; //cahce DOM
+
+  var $modal = null;
+  var $domElement = null;
+  var $root = null; //private methods
+
+  function _addToCart(article, $btn, event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    _cart.default.add(article);
+
+    if ($btn) {
+      $btn.tooltip('show');
+    }
+  }
+
+  function _removeFromCart(articleId, event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    _cart.default.remove(articleId);
+  }
+
+  function _openModal(article, event) {
+    if (event) {
+      event.preventDefault();
+    }
+
+    $('body').css('overflow', 'hidden').append(_templates.default.articleModal(article));
+    $modal = $('#article-photo-modal');
+    $modal.show();
+
+    _bindModalEvents(article);
+
+    _url.default.setParam('articleId', article.id);
+  }
+
+  function _closeLightBox(event) {
+    event.preventDefault();
+    $modal.remove();
+    $modal = null;
+    $('body').css('overflow-y', 'scroll');
+
+    _url.default.removeParam('articleId');
+  }
+
+  function _bindModalEvents(article) {
+    //stop event propagation on all child elements(don't close modal on children click)
+    $modal.children().on('click', function (event) {
+      return event.stopPropagation();
+    }); //closing events
+
+    $modal.find('.fa-times').on('click', _closeLightBox);
+    $modal.on('click', _closeLightBox); //add article to cart event
+
+    $modal.find('.add-to-cart').on('click', _addToCart.bind(this, article, $modal.find('.add-to-cart')));
+  } //public methods
+
+
+  return {
+    init: function init(article, type, $rootElement, num) {
+      $root = $rootElement;
+      this.setArticle(article);
+      this.render(type, num);
+      $domElement = $root.children().last();
+      this.bindEvents(article, type);
+    },
+    render: function render(type, num) {
+      var template = '';
+
+      switch (type) {
+        case VIEWS.BOX:
+          template = _templates.default.article(article);
+          break;
+
+        case VIEWS.TABLE:
+          template = _templates.default.articleTr(article, num);
+          break;
+
+        case VIEWS.POPOVER_TABLE:
+          template = _templates.default.articleTrPopover(article, num);
+          break;
+
+        default:
+          throw new Error("Invalid type: ".concat(type));
+          break;
+      }
+
+      $root.append(template);
+    },
+    getArticle: function getArticle() {
+      return article;
+    },
+    setArticle: function setArticle(newArticle) {
+      article = newArticle;
+    },
+    showArticle: function showArticle(article) {
+      _openModal(article);
+    },
+    bindEvents: function bindEvents(article, type) {
+      if (type === VIEWS.BOX) {
+        $domElement.on('click', _openModal.bind(this, article));
+        $domElement.find('.add-to-cart').on('click', _addToCart.bind(this, article, $domElement.find('.add-to-cart')));
+      } else if (type === VIEWS.TABLE) $domElement.find('.remove-form-cart').on('click', _removeFromCart.bind(this, article.id));
+    }
+  };
+}();
+
+exports.default = _default;
+},{"../helpers/url":"src/helpers/url.js","./cart":"src/modules/cart.js","./templates":"src/modules/templates.js"}],"src/modules/articles.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _url = _interopRequireDefault(require("../helpers/url"));
+
+var _mockup = _interopRequireDefault(require("../mockup"));
+
+var _article = _interopRequireDefault(require("./article"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -991,7 +957,7 @@ var _default = function () {
   }
 
   function _getArticleData(type) {
-    var articles = _mockUpData.default.articles;
+    var articles = _mockup.default.articles;
 
     if (type === 'sve') {
       return articles;
@@ -1070,7 +1036,7 @@ var _default = function () {
 }();
 
 exports.default = _default;
-},{"./helpers/url":"src/modules/helpers/url.js","./article":"src/modules/article.js","./helpers/mockUpData":"src/modules/helpers/mockUpData.js"}],"src/app.js":[function(require,module,exports) {
+},{"../helpers/url":"src/helpers/url.js","../mockup":"src/mockup/index.js","./article":"src/modules/article.js"}],"src/app.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1101,7 +1067,7 @@ var app = {
         return e.preventDefault();
       });
 
-      if (url == '/' || url == '/index.php') {
+      if (url === '/' || url === '/index.php') {
         (0, _counter.default)('.shop-counter');
 
         _articles.default.init();
@@ -1109,7 +1075,7 @@ var app = {
 
       _cart.default.init();
 
-      if (url == '/korpa.php') {
+      if (url === '/korpa.php') {
         _cart.default.render();
 
         _cart.default.initCacheOutForm();
@@ -1154,7 +1120,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "41906" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "45335" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

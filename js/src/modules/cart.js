@@ -92,8 +92,8 @@ export default (function() {
       $nofitication
         .find('.show-popover-cart')
         .off()
-        .on('click', function(e) {
-          e.preventDefault()
+        .on('click', event => {
+          event.preventDefault()
           $nofitication.fadeOut(_renderPopoverCart)
         })
       _bindClosingEvent($nofitication, 'notification')
@@ -112,8 +112,8 @@ export default (function() {
         e.preventDefault()
         $(el).hide('fast')
 
-        if (type == 'notification') isNotificationShowing = false
-        if (type == 'popover-cart') isPopoverCartShowing = false
+        if (type === 'notification') isNotificationShowing = false
+        if (type === 'popover-cart') isPopoverCartShowing = false
       })
   }
 

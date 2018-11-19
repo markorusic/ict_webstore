@@ -1,6 +1,6 @@
-import url from './helpers/url'
+import url from '../helpers/url'
+import mockUpData from '../mockup'
 import article from './article'
-import mockUpData from './helpers/mockUpData'
 
 export default (function() {
   //cache DOM

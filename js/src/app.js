@@ -6,8 +6,8 @@ import cart from './modules/cart'
 const app = {
   init: () => {
     $(function() {
-      var url = window.location.pathname
-      var fileName = url.substring(url.lastIndexOf('/') + 1)
+      const url = window.location.pathname
+      const fileName = url.substring(url.lastIndexOf('/') + 1)
 
       $('a[href="' + fileName + '"]')
         .parent()
@@ -23,14 +23,14 @@ const app = {
         .not('.submit-cart')
         .on('click', e => e.preventDefault())
 
-      if (url == '/' || url == '/index.php') {
+      if (url === '/' || url === '/index.php') {
         initializeClock('.shop-counter')
         articles.init()
       }
 
       cart.init()
 
-      if (url == '/korpa.php') {
+      if (url === '/korpa.php') {
         cart.render()
         cart.initCacheOutForm()
       }

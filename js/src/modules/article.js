@@ -1,6 +1,12 @@
+import url from '../helpers/url'
 import cart from './cart'
 import templates from './templates'
-import url from './helpers/url'
+
+const VIEWS = {
+  BOX: 'box-view',
+  TABLE: 'table-view',
+  POPOVER_TABLE: 'popover-table-view'
+}
 
 export default (function() {
   //state
@@ -29,7 +35,7 @@ export default (function() {
     cart.remove(articleId)
   }
 
-  function _openLightBox(article, event) {
+  function _openModal(article, event) {
     if (event) {
       event.preventDefault()
     }
@@ -83,15 +89,15 @@ export default (function() {
     render(type, num) {
       let template = ''
       switch (type) {
-        case 'box-view':
+        case VIEWS.BOX:
           template = templates.article(article)
           break
 
-        case 'table-view':
+        case VIEWS.TABLE:
           template = templates.articleTr(article, num)
           break
 
-        case 'popover-table-view':
+        case VIEWS.POPOVER_TABLE:
           template = templates.articleTrPopover(article, num)
           break
 
@@ -111,19 +117,19 @@ export default (function() {
     },
 
     showArticle(article) {
-      _openLightBox(article)
+      _openModal(article)
     },
 
     bindEvents(article, type) {
-      if (type == 'box-view') {
-        $domElement.on('click', _openLightBox.bind(this, article))
+      if (type === VIEWS.BOX) {
+        $domElement.on('click', _openModal.bind(this, article))
         $domElement
           .find('.add-to-cart')
           .on(
             'click',
             _addToCart.bind(this, article, $domElement.find('.add-to-cart'))
           )
-      } else if (type == 'table-view')
+      } else if (type === VIEWS.TABLE)
         $domElement
           .find('.remove-form-cart')
           .on('click', _removeFromCart.bind(this, article.id))

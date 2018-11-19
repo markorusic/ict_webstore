@@ -35,7 +35,7 @@ include('header.php'); ?>
                     
 
                     <h4 class="text-center">Odricanje od odgovornosti (Disclaimer)</h4>
-                    <p class="text-center normal">Sav sadrzaj sajta je generisan u svrhu prikaza stecenog znanja iz front end tehnologija, tj. HTML-a, CSS-a i Javascripta (samoinicijativno). Ni jedna fotografija ne pripada autoru i ukoliko neko smatra da su njegova prava time ugrozena moze kontaktirati autora na mejl markousp5@gmail.com i neprikladni sadrzaj ce biti uklonjen.</p>
+                    <p class="text-center normal">Sav sadrzaj sajta je generisan u svrhu prikaza stecenog znanja iz front end tehnologija, tj. HTML-a, CSS-a i Javascripta. Ni jedna fotografija ne pripada autoru i ukoliko neko smatra da su njegova prava time ugrozena moze kontaktirati autora na mejl markousp5@gmail.com i neprikladni sadrzaj ce biti uklonjen.</p>
 
                     <p class="text-center normal">All content of this website is generated in pourpose of showing acquired knowledge in font end web technologies (educational purposes), HTML, CSS and Javascript. None of photos on website belongs to author and if anybody feels like it's violating he's rights, he may feel free to contact author on email markousp5@gmail.com and inappropriate content will be removed.</p>
                 </article>
